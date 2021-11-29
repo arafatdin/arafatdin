@@ -1,0 +1,17 @@
+from telebot import *
+
+
+from deep_translator import GoogleTranslator
+translated = GoogleTranslator(source='auto', target='ru').translate("keep it up, you are awesome")
+print(translated)
+
+bot = telebot.TeleBot('2054265339:AAFyHnop0GVdTAFGL5GGLCWjd6jpIEV3nk8')
+
+lang = "ru"
+@bot.message_handler(content_types=["text"])
+def repeat_all_messages(message): # Название функции не играет никакой роли
+    bot.send_message(message.chat.id,GoogleTranslator(source='auto', target=lang).translate( message.text))
+    pass
+
+if name == 'main':
+    bot.infinity_polling()
